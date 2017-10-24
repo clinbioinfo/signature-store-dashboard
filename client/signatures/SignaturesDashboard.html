@@ -1,0 +1,31 @@
+<template name="SignaturesDashboard">
+	<h4>Signature Count: ({{signatureCount}})</h4>
+	{{#if $.Session.get 'newSignature'}}
+		{{> NewSignature}}
+	{{else}}
+		<!-- <button class="new-signature">New Signature</button> -->
+	{{/if}}
+	<section class="signatures">
+		{{# if Template.subscriptionsReady}}
+			<table class="table table-stiped table-condensed">
+			<!-- <table> -->
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>						
+						<th>Description</th>
+						<th>Source</th>
+						<th>View Details</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each signatures}}
+					{{> SignatureSummary}}
+				{{/each}}
+				</tbody>
+			</table>
+		{{else}}
+		<p>Loading</p>
+		{{/if}}
+	</section>
+</template>

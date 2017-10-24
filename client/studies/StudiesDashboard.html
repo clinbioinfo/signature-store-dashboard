@@ -1,0 +1,29 @@
+<template name="StudiesDashboard">
+	<h4>Study Count: ({{studyCount}})</h4>
+	{{#if $.Session.get 'newStudy'}}
+		{{> NewStudy}}
+	{{else}}
+		<!-- <button class="new-signature">New Study</button> -->
+	{{/if}}
+	<section class="studies">
+		{{# if Template.subscriptionsReady}}
+			<table class="table table-stiped table-condensed">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>						
+						<th>Description</th>
+						<th>View Details</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each studies}}
+					{{> StudySummary}}
+				{{/each}}
+				</tbody>
+			</table>
+		{{else}}
+		<p>Loading</p>
+		{{/if}}
+	</section>
+</template>

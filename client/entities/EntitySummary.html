@@ -1,0 +1,20 @@
+<template name="EntitySummary">
+	<tr>
+		<td>{{_id}}</td>
+		<td>{{name}}</td>
+		<td>{{pval}}</td>
+		<td>{{fc}}</td>
+		<td>{{signature_id}}</td>
+		<td><a href="/entity/{{_id}}" title="View Details"><i class="fa fa-list"></i></a></td>
+	</tr>
+<!-- 	<article class="signaturesummary">
+		<h4>{{_id}}</h4>
+		{{#if editMode}}
+			{{> quickForm collection="Signatures" id=updateSignatureSummaryId type="update" doc=this autosave=true}}		
+		{{else}}
+			
+		{{/if}}
+		<i class="fa fa-pencil"></i> -->
+		<!-- <i class="fa fa-trash"></i> -->
+	<!-- </article> -->
+</template>

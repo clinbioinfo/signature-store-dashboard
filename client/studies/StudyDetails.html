@@ -1,0 +1,48 @@
+<template name="StudyDetails">
+  <h1>{{study._id}}</h1>
+  <div class="description">    
+    <h4>{{study.name}}</h4>
+    {{#if study.desc}}      
+      <i class="fa fa-pencil edit-description"></i>
+      <p>{{study.desc}}</p>
+    {{else}}
+      {{#if $.Session.get 'newDescription'}}
+        {{> NewDescription}}
+      {{else}}
+        <button id="newDescriptionButton" title="Add new description">Add</button>
+        <p>No description yet.</p>
+      {{/if}}        
+    {{/if}}
+    <p>{{study.objectives}}</p>
+  </div>  
+  <div class="annotations">
+    <h4>Annotations ({{study.annotations.length}})</h4>    
+    {{#if $.Session.get 'newAnnotation'}}
+      {{> NewAnnotation }}
+    {{else}}
+      <button id="newAnnotationButton" title="Add new annotation">Add</button>
+      <br>
+    {{/if}}
+    <br>
+    {{#each study.annotations}}
+      {{> Annotation}}
+    {{else}}
+      <!-- <p>No annotations yet.</p> -->
+    {{/each}}
+  </div>    
+  <div class="comments">
+    <h4>Comments ({{study.comments.length}})</h4>
+    {{#if $.Session.get 'newComment'}}
+      {{> NewComment }}
+    {{else}}
+      <button id="newCommentButton" title="Add new comment">Add</button>
+      <br>
+    {{/if}}
+    <br>
+    {{#each study.comments}}
+      {{> Comment}}
+    {{else}}
+      <!-- <p>No comments yet.</p> -->
+    {{/each}}      
+  </div>  
+</template>

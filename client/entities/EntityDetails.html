@@ -1,0 +1,80 @@
+<template name="EntityDetails">
+  <h1>{{entity._id}}</h1>
+  <div class="description">    
+    <h4>{{entity.name}}</h4>
+    {{#if entity.desc}}      
+      <i class="fa fa-pencil edit-description"></i>
+      <p>{{entity.desc}}</p>
+    {{else}}
+      {{#if $.Session.get 'newDescription'}}
+        {{> NewDescription}}
+      {{else}}
+        <p>No description yet.</p><button id="newDescriptionButton" title="Add new description">Add</button>        
+      {{/if}}        
+    {{/if}}
+
+
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{entity.name}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{entity.desc}}</td>
+        </tr>
+        <tr>
+          <td>Pval</td>
+          <td>{{entity.pval}}</td>
+        </tr>
+        <tr>
+          <td>FC</td>
+          <td>{{entity.fc}}</td>
+        </tr>
+        <tr>
+          <td>Signature ID</td>
+          <td>{{entity.signature_id}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>  
+  <div class="annotations">
+    <h4>Annotations ({{entity.annotations.length}})</h4>    
+    {{#if $.Session.get 'newAnnotation'}}
+      {{> NewAnnotation }}
+    {{else}}
+      <button id="newAnnotationButton" title="Add new annotation">Add</button>
+      <br>
+    {{/if}}
+    <br>
+    {{#each entity.annotations}}
+      {{> Annotation}}
+    {{else}}
+      <!-- <p>No annotations yet.</p> -->
+    {{/each}}
+  </div>    
+  <div class="comments">
+    <h4>Comments ({{entity.comments.length}})</h4>
+    {{#if $.Session.get 'newComment'}}
+      {{> NewComment }}
+    {{else}}
+      <button id="newCommentButton" title="Add new comment">Add</button>
+      <br>
+    {{/if}}
+    <br>
+    {{#each entity.comments}}
+      {{> Comment}}
+    {{else}}
+      <!-- <p>No comments yet.</p> -->
+    {{/each}}      
+  </div>  
+</template>

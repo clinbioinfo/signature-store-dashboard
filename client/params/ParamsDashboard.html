@@ -1,0 +1,31 @@
+<template name="ParamsDashboard">
+	<h4>Param Count: ({{paramCount}})</h4>
+	{{#if $.Session.get 'newParam'}}
+		{{> NewParam}}
+	{{else}}
+		<!-- <button class="new-param">New Param</button> -->
+	{{/if}}
+	<section class="params">
+		{{# if Template.subscriptionsReady}}
+			<table class="table table-stiped table-condensed">
+			<!-- <table> -->
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>						
+						<th>Value</th>
+						<th>Signature ID</th>
+						<th>View Details</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each params}}
+					{{> ParamSummary}}
+				{{/each}}
+				</tbody>
+			</table>
+		{{else}}
+		<p>Loading</p>
+		{{/if}}
+	</section>
+</template>

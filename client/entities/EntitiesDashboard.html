@@ -1,0 +1,31 @@
+<template name="EntitiesDashboard">
+	<h4>Entity Count: ({{entityCount}})</h4>
+	{{#if $.Session.get 'newEntity'}}
+		{{> NewEntity}}
+	{{else}}
+		<!-- <button class="new-signature">New Entity</button> -->
+	{{/if}}
+	<section class="entities">
+		{{# if Template.subscriptionsReady}}
+			<table class="table table-stiped table-condensed">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>						
+						<th>Pval</th>
+						<th>FC</th>
+						<th>Signature ID</th>
+						<th>View Details</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each entities}}
+					{{> EntitySummary}}
+				{{/each}}
+				</tbody>
+			</table>
+		{{else}}
+		<p>Loading</p>
+		{{/if}}
+	</section>
+</template>
