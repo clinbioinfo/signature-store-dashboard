@@ -1,0 +1,4 @@
+## Install nodejs
+sudo yum install nodejs npm
+## Install Meteor.js
+curl https://install.meteor.com | /bin/sh
